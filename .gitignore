@@ -9,3 +9,5 @@ node_modules/
 resources/
 
 auth/
+
+tests/contents/
