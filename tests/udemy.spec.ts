@@ -89,10 +89,12 @@ test("udemy course Transcript downloader ", async ({ browser }) => {
 
       await page.waitForTimeout(10000);
 
-      runShellCommand(
+      /*
+runShellCommand(
         `node master-mind.js`,
         path.join(__dirname, "..", "resources", courseHeadingText)
       );
+*/
 
       /*
       await page.waitForTimeout(30000);
