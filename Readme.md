@@ -6,6 +6,10 @@ This project allows you to automate the process of downloading Udemy courses usi
 
 Ensure you have Node.js and npm installed on your system. You can download Node.js from [here](https://nodejs.org/).
 
+```sh
+npm init playwright@latest
+```
+
 ## Setup Instructions
 
 1. **Generate Authentication Storage**:
