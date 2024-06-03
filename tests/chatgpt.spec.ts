@@ -10,12 +10,13 @@ test("notes-creator", async ({ browser }) => {
   const allContentsList = fs.readdirSync(directoryPath);
 
   const context = await browser.newContext({
-    storageState: "./chatgpt.json",
+    storageState: "./auth/chatgpt.json",
   });
 
   const page = await context.newPage();
 
   for (const singleContent of allContentsList) {
+    // https://chatgpt.com/g/g-B694V9Jp7-jarvis?oai-dm=1
     await page.goto("https://chatgpt.com/");
 
     await page.waitForTimeout(3000);
@@ -36,8 +37,8 @@ test("notes-creator", async ({ browser }) => {
       'button[data-testid="fruitjuice-send-button"]:not(.disabled):not([disabled])';
 
     for (const item of allContent) {
-      for (const contentKey of Object.keys(item.contents)) {
-        const content = item.contents[contentKey];
+      for (const contentKey of Object.keys(item.content)) {
+        const content = item.content[contentKey];
 
         await page.fill('textarea[id="prompt-textarea"]', content);
 
