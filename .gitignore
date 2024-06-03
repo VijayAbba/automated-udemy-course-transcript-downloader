@@ -11,3 +11,5 @@ resources/
 auth/
 
 tests/contents/
+tests/contents-raw
+tests/pending
