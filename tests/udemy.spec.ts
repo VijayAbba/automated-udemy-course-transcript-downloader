@@ -21,7 +21,7 @@ import {
 //
 
 enum MyGlobalVariable {
-  URL = "https://www.udemy.com/course/cypress-end-to-end-testing-getting-started/learn/lecture/36409308#overview",
+  URL = "https://www.udemy.com/course/git-github-practical-guide/learn/lecture/28082344?start=45#overview",
 }
 
 test("udemy course Transcript downloader ", async ({ browser }) => {
