@@ -1,16 +1,17 @@
 const fs = require("fs");
 const path = require("path");
 
-const MAX_CONTENT_LENGTH = 5900;
+const MAX_CONTENT_LENGTH = 5700;
 
 // Custom text variables
-const startingText = 'Create Good Notes from Transcript: "';
+const startingText = (chapterFolder) =>
+  `Create Good Notes from,Title:${chapterFolder}, Transcript: "`;
 const endingText = '"';
 
-const splitContentStartingText = (index) =>
-  `don't create notes yet wait For the Next Part of the transcript,This is transcript part${index}:`;
-const splitContentEndingText = (index) =>
-  `Create Good Notes from all parts 1 to ${index}, transcript part${index}:`;
+const splitContentStartingText = (index, chapterFolder) =>
+  `don't create notes yet wait For the Next Part of the transcript,Title:${chapterFolder}, This is transcript part${index}:`;
+const splitContentEndingText = (index, chapterFolder) =>
+  `Create Good Notes from all parts 1 to ${index},Title:${chapterFolder}, transcript part${index}:`;
 
 // Custom objects to add at the start and end of the array
 const customStartObject = {
@@ -60,17 +61,21 @@ function collectTranscripts(sectionDir) {
 
         if (contentParts.length === 1) {
           // Add custom text for single content
-          contentObj.content1 = `${startingText}\n${contentObj.content1}\n${endingText}`;
+          contentObj.content1 = `${startingText(chapterFolder)}\n${
+            contentObj.content1
+          }\n${endingText}`;
         } else {
           // Add custom text for multiple content parts
           contentParts.forEach((part, index) => {
             if (index === contentParts.length - 1) {
               contentObj[`content${index + 1}`] = `${splitContentEndingText(
-                index + 1
+                index + 1,
+                chapterFolder
               )}"${part}"`;
             } else {
               contentObj[`content${index + 1}`] = `${splitContentStartingText(
-                index + 1
+                index + 1,
+                chapterFolder
               )}"${part}"`;
             }
           });

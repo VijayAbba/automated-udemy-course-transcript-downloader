@@ -49,8 +49,8 @@ test("notes", async ({ browser }) => {
       'button[class="absolute bottom-1.5 right-2 rounded-md p-1 text-white transition-colors enabled:bg-indigo-600 disabled:text-gray-400 disabled:opacity-40 dark:hover:bg-gray-900 dark:disabled:hover:bg-transparent md:bottom-3 md:right-3 md:p-2"]:not(.disabled):not([disabled])';
 
     for (const item of allContent) {
-      for (const contentKey of Object.keys(item.contents)) {
-        const content = item.contents[contentKey];
+      for (const contentKey of Object.keys(item.content)) {
+        const content = item.content[contentKey];
         // console.log(content);
 
         await page.fill('textarea[id="ai-user-input-textarea"]', content);
