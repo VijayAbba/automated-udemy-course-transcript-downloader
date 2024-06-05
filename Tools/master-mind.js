@@ -4,14 +4,27 @@ const path = require("path");
 const MAX_CONTENT_LENGTH = 5700;
 
 // Custom text variables
-const startingText = (chapterFolder) =>
-  `Create Good Notes from,Title:${chapterFolder}, Transcript: "`;
+const doc = (condition) => (condition ? "Document" : "Transcript");
+
+const startingText = (chapterFolder) => {
+  const condition = doc(chapterFolder.endsWith("DOC"));
+
+  return `Create Good Notes from,Title:${chapterFolder}, ${condition}: "`;
+};
+
 const endingText = '"';
 
-const splitContentStartingText = (index, chapterFolder) =>
-  `don't create notes yet wait For the Next Part of the transcript,Title:${chapterFolder}, This is transcript part${index}:`;
-const splitContentEndingText = (index, chapterFolder) =>
-  `Create Good Notes from all parts 1 to ${index},Title:${chapterFolder}, transcript part${index}:`;
+const splitContentStartingText = (index, chapterFolder) => {
+  const condition = doc(chapterFolder.endsWith("DOC"));
+
+  return `don't create notes yet wait For the Next Part of the ${condition},Title:${chapterFolder}, This is ${condition} part${index}:`;
+};
+
+const splitContentEndingText = (index, chapterFolder) => {
+  const condition = doc(chapterFolder.endsWith("DOC"));
+
+  return `Create Good Notes from all parts 1 to ${index},Title:${chapterFolder}, ${condition} part${index}:`;
+};
 
 // Custom objects to add at the start and end of the array
 const customStartObject = {
