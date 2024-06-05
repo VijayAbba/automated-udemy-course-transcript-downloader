@@ -1,0 +1,16 @@
+OLD PROMPTS
+
+This is Part ${number}, wait For the Next Part of the transcript
+
+Transcript Part ${number}:
+
+ "
+
+wait For the Next Part of the transcript 
+---------------------------------------------------
+
+This is Part ${number}, Now Create Notes form Part 1 to Part ${number} Transcripts 
+
+Transcript Part ${number}:
+
+ 
