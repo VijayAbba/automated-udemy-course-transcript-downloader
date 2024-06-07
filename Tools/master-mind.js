@@ -14,6 +14,8 @@ const startingText = (chapterFolder) => {
 
 const endingText = '"';
 
+const endingTextForSplit =
+  "\n\nplease wait For the Next Part of the Transcript";
 const splitContentStartingText = (index, chapterFolder) => {
   const condition = doc(chapterFolder.endsWith("DOC"));
 
@@ -89,7 +91,7 @@ function collectTranscripts(sectionDir) {
               contentObj[`content${index + 1}`] = `${splitContentStartingText(
                 index + 1,
                 chapterFolder
-              )}"${part}"`;
+              )}"${part}"${endingTextForSplit}`;
             }
           });
         }

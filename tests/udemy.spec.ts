@@ -21,7 +21,7 @@ import {
 //
 
 enum MyGlobalVariable {
-  URL = "https://www.udemy.com/course/git-github-practical-guide/learn/lecture/28082344?start=45#overview",
+  URL = "https://www.udemy.com/course/chatgpt-bard-bing-complete-guide-to-chatgpt-openai-apis/learn/lecture/37569248#overview",
 }
 
 test("udemy course Transcript downloader ", async ({ browser }) => {
