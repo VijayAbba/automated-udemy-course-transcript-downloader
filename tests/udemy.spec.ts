@@ -6,22 +6,15 @@ import { copyFileToAFolder } from "../utils/copyFilesToFolder";
 
 import { runShellCommand } from "../utils/runShellCommand";
 
-import {
-  courseHeading,
-  titleHeading,
-  sectionHeading,
-} from "../src/courseHeadind";
+import { courseHeading, titleHeading, sectionHeading } from "../src/courseHeadind";
 
-import {
-  extractDocument,
-  extractTranscript,
-} from "../src/documentAndTranscript";
+import { extractDocument, extractTranscript } from "../src/documentAndTranscript";
 
 //
 //
 
 enum MyGlobalVariable {
-  URL = "https://www.udemy.com/course/chatgpt-bard-bing-complete-guide-to-chatgpt-openai-apis/learn/lecture/37569248#overview",
+  URL = "https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/37130436#overview",
 }
 
 test("udemy course Transcript downloader ", async ({ browser }) => {
@@ -55,7 +48,7 @@ test("udemy course Transcript downloader ", async ({ browser }) => {
     let titleText = await titleHeading(page);
     let sectionText = await sectionHeading(page);
 
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(5000);
 
     const transcriptBtnSelector = 'button[data-purpose="transcript-toggle"]';
     const transcriptBtnElement = await page.$(transcriptBtnSelector);
@@ -70,10 +63,16 @@ test("udemy course Transcript downloader ", async ({ browser }) => {
       await extractDocument(page, titleText, sectionText, courseHeadingText);
     }
 
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(5000);
 
     // check next button
     const nextLetureBtn = await page.$('div[data-purpose="go-to-next"]');
+
+    const cancleButton = await page.$('button[data-purpose="cancel-button"]');
+
+    if (cancleButton) {
+      await page.click('button[data-purpose="cancel-button"]');
+    }
 
     if (nextLetureBtn) {
       await page.click('div[data-purpose="go-to-next"]');

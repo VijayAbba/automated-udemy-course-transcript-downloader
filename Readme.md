@@ -16,8 +16,15 @@ npm init playwright@latest
 
    - Open a terminal or command prompt.
    - Run the following command to start Playwright's code generation tool, which will save your authentication state:
+
      ```sh
      npx playwright codegen --save-storage=udemy-auth.json
+
+     or
+
+
+     npx playwright codegen --save-storage=udemy-auth.json --browser=firefox
+
      ```
 
 2. **Log into Your Udemy Account**:
